@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BlockView } from "../utils/block-view";
+import Rating from "../components/Rating";
 
 export default function FestivalView({ data }: { data: Festival }) {
   const {
@@ -31,9 +32,14 @@ export default function FestivalView({ data }: { data: Festival }) {
   //   authorsBio.data?.attributes.avatar.data.attributes.url
   // );
 
+  const maxStars = 5;
+  const filledStars = 1;
+  const emptyStars = maxStars - filledStars;
+
   return (
     <article className="space-y-8 dark:bg-black dark:text-gray-50  bg-opacity-80">
       {/* <p>{JSON.stringify({ data })}</p> */}
+
       {carousel.length > 0 && <ImageSlider data={{ files: carousel }} />}
 
       {/* {imageUrl && (
@@ -155,7 +161,9 @@ export default function FestivalView({ data }: { data: Festival }) {
                       )}
                       <div className="mx-2 mt-1">{review?.reviewer?.name}</div>
                     </div>
-                    <p className="mx-2 mt-1">{review?.stars} </p>
+                    {/* <p className="mx-2 mt-1">{review?.stars} </p> */}
+                    {/* @ts-ignore */}
+                    <Rating rating={review?.stars ?? 0}></Rating>
                   </div>
                 ))}
                 {/* <div className="flex justify-between">

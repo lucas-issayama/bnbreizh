@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "music_styles",
+  "info": {
+    "singularName": "music-style",
+    "pluralName": "music-styles",
+    "displayName": "MusicStyle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "festivals": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::festival.festival",
+      "inversedBy": "musicStyles"
+    },
+    "textColor": {
+      "type": "string"
+    }
+  }
+}

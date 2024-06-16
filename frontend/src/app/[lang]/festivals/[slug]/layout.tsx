@@ -1,4 +1,4 @@
-import ArticleSelect from "@/app/[lang]/components/ArticleSelect";
+//import ArticleSelect from "@/app/[lang]/components/ArticleSelect";
 import { fetchAPI } from "@/app/[lang]/utils/fetch-api";
 
 async function fetchSideMenuData(filter: string) {
@@ -73,17 +73,19 @@ export default async function LayoutRoute({
   const { categories, articles } = (await fetchSideMenuData(category)) as Data;
 
   return (
-    <section className="container p-8 mx-auto space-y-6 sm:space-y-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
-        <div className="col-span-2">{children}</div>
-        <aside>
+    <section className="container p-8 mx-auto space-y-6 sm:space-y-12 ">
+      <div className="col-span-3">{children}</div>
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4"> */}
+      {/* <div className="col-span-3">{children}</div> */}
+
+      {/* <aside className="bg-blue-500 bg-opacity-50">
           <ArticleSelect
             categories={categories}
             articles={articles}
             params={params}
           />
-        </aside>
-      </div>
+        </aside> */}
+      {/* </div> */}
     </section>
   );
 }

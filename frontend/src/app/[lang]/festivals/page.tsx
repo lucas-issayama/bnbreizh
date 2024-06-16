@@ -5,6 +5,7 @@ import { fetchAPI } from "../utils/fetch-api";
 import Loader from "../components/Loader";
 import Blog from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
+import FestivalsList from "../views/festivals-list";
 
 interface Meta {
   pagination: {
@@ -14,7 +15,7 @@ interface Meta {
   };
 }
 
-export default function Profile() {
+export default function Festivals() {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
@@ -23,15 +24,15 @@ export default function Profile() {
     setLoading(true);
     try {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/articles`;
+      const path = `/festivals`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
         populate: {
           cover: { fields: ["url"] },
-          category: { populate: "*" },
-          authorsBio: {
-            populate: "*",
-          },
+          // category: { populate: "*" },
+          // authorsBio: {
+          //   populate: "*",
+          // },
         },
         pagination: {
           start: start,
@@ -40,11 +41,12 @@ export default function Profile() {
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
-
+      console.log("----------Answer");
+      console.log(JSON.stringify({ responseData }));
       if (start === 0) {
         setData(responseData.data);
       } else {
-        setData((prevData: any[] ) => [...prevData, ...responseData.data]);
+        setData((prevData: any[]) => [...prevData, ...responseData.data]);
       }
 
       setMeta(responseData.meta);
@@ -68,8 +70,8 @@ export default function Profile() {
 
   return (
     <div>
-      <PageHeader heading="Our Blog" text="Checkout Something Cool" />
-      <Blog data={data}>
+      <PageHeader heading="Search" text="Search your favorite festivals" />
+      <FestivalsList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
           <div className="flex justify-center">
@@ -82,7 +84,7 @@ export default function Profile() {
             </button>
           </div>
         )}
-      </Blog>
+      </FestivalsList>
     </div>
   );
 }

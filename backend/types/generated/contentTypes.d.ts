@@ -828,6 +828,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::author.author'
     >;
     seo: Attribute.Component<'shared.seo'>;
+    carousel: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -839,6 +840,43 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArtistArtist extends Schema.CollectionType {
+  collectionName: 'artists';
+  info: {
+    singularName: 'artist';
+    pluralName: 'artists';
+    displayName: 'Artist';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    cover: Attribute.Media;
+    festivals: Attribute.Relation<
+      'api::artist.artist',
+      'manyToMany',
+      'api::festival.festival'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::artist.artist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::artist.artist',
       'oneToOne',
       'admin::user'
     > &
@@ -913,6 +951,73 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFestivalFestival extends Schema.CollectionType {
+  collectionName: 'festivals';
+  info: {
+    singularName: 'festival';
+    pluralName: 'festivals';
+    displayName: 'Festival';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
+    slug: Attribute.UID<'api::festival.festival', 'title'>;
+    cover: Attribute.Media;
+    carousel: Attribute.Media;
+    seo: Attribute.Component<'shared.seo'>;
+    blocks: Attribute.DynamicZone<
+      [
+        'shared.media',
+        'shared.quote',
+        'shared.rich-text',
+        'shared.slider',
+        'shared.video-embed'
+      ]
+    >;
+    cityName: Attribute.String;
+    avaragePricePerDay: Attribute.Float;
+    reviews: Attribute.Relation<
+      'api::festival.festival',
+      'oneToMany',
+      'api::review.review'
+    >;
+    artists: Attribute.Relation<
+      'api::festival.festival',
+      'manyToMany',
+      'api::artist.artist'
+    >;
+    tags: Attribute.Relation<
+      'api::festival.festival',
+      'manyToMany',
+      'api::tag.tag'
+    >;
+    musicStyles: Attribute.Relation<
+      'api::festival.festival',
+      'manyToMany',
+      'api::music-style.music-style'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::festival.festival',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::festival.festival',
       'oneToOne',
       'admin::user'
     > &
@@ -1022,6 +1127,44 @@ export interface ApiLeadFormSubmissionLeadFormSubmission
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::lead-form-submission.lead-form-submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMusicStyleMusicStyle extends Schema.CollectionType {
+  collectionName: 'music_styles';
+  info: {
+    singularName: 'music-style';
+    pluralName: 'music-styles';
+    displayName: 'MusicStyle';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    color: Attribute.String;
+    festivals: Attribute.Relation<
+      'api::music-style.music-style',
+      'manyToMany',
+      'api::festival.festival'
+    >;
+    textColor: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::music-style.music-style',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::music-style.music-style',
       'oneToOne',
       'admin::user'
     > &
@@ -1144,6 +1287,111 @@ export interface ApiProductFeatureProductFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'Review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    festival: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::festival.festival'
+    >;
+    reviewer: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::reviewer.reviewer'
+    >;
+    stars: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReviewerReviewer extends Schema.CollectionType {
+  collectionName: 'reviewers';
+  info: {
+    singularName: 'reviewer';
+    pluralName: 'reviewers';
+    displayName: 'Reviewer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    cover: Attribute.Media;
+    reviews: Attribute.Relation<
+      'api::reviewer.reviewer',
+      'oneToMany',
+      'api::review.review'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reviewer.reviewer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reviewer.reviewer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'Tag';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    festivals: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::festival.festival'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1163,12 +1411,18 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
+      'api::artist.artist': ApiArtistArtist;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::festival.festival': ApiFestivalFestival;
       'api::global.global': ApiGlobalGlobal;
       'api::lead-form-submission.lead-form-submission': ApiLeadFormSubmissionLeadFormSubmission;
+      'api::music-style.music-style': ApiMusicStyleMusicStyle;
       'api::page.page': ApiPagePage;
       'api::product-feature.product-feature': ApiProductFeatureProductFeature;
+      'api::review.review': ApiReviewReview;
+      'api::reviewer.reviewer': ApiReviewerReviewer;
+      'api::tag.tag': ApiTagTag;
     }
   }
 }

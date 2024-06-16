@@ -43,15 +43,6 @@ export default async function ExplorePage({ params }: Props) {
 
       let values = sanitize(res.data);
       setFestivals(values);
-      console.log(JSON.stringify({ res }));
-      console.log(JSON.stringify({ values }));
-      // if (start === 0) {
-      //   setData(responseData.data);
-      // } else {
-      //   setData((prevData: any[]) => [...prevData, ...responseData.data]);
-      // }
-
-      //setMeta(responseData.meta);
     } catch (error) {
       console.error(error);
     } finally {

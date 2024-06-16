@@ -41,8 +41,6 @@ export default function Festivals() {
       };
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
-      console.log("----------Answer");
-      console.log(JSON.stringify({ responseData }));
       if (start === 0) {
         setData(responseData.data);
       } else {

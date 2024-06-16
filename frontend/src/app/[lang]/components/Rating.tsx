@@ -17,9 +17,9 @@ const Rating: React.FC<RatingProps> = ({ rating }) => {
         <div
           key={index}
           style={{
-            width: "20px",
-            height: "20px",
-            backgroundColor: "yellow",
+            width: "15px",
+            height: "15px",
+            backgroundColor: "#FBBC04",
             margin: "2px",
             borderRadius: "10px",
           }}
@@ -29,8 +29,8 @@ const Rating: React.FC<RatingProps> = ({ rating }) => {
         <div
           key={index}
           style={{
-            width: "20px",
-            height: "20px",
+            width: "15px",
+            height: "15px",
             backgroundColor: "lightgrey",
             margin: "2px",
             borderRadius: "10px",

@@ -18,7 +18,7 @@ export default function MapComponent({ festivals }: any) {
       setMarkers(
         festivals.map((el: any) => ({
           id: el.id,
-          longitude: el.latitude ?? -4.4855,
+          longitude: el.longitude ?? -4.4855,
           latitude: el.latitude ?? 48.3814,
           description: el?.title,
         }))

@@ -66,7 +66,7 @@ export default async function ExplorePage({ params }: Props) {
   return (
     <div className="mx-5">
       <h2 className="text-lg">Explore </h2>
-      <p>{JSON.stringify({ festivals })}</p>
+      {/* <p>{JSON.stringify({ festivals })}</p> */}
       <br></br>
       <div>
         <Map festivals={festivals} />

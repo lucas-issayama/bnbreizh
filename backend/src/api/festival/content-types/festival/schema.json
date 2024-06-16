@@ -88,6 +88,12 @@
       "relation": "manyToMany",
       "target": "api::music-style.music-style",
       "mappedBy": "festivals"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
     }
   }
 }

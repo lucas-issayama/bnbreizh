@@ -1007,6 +1007,8 @@ export interface ApiFestivalFestival extends Schema.CollectionType {
       'manyToMany',
       'api::music-style.music-style'
     >;
+    latitude: Attribute.Float;
+    longitude: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

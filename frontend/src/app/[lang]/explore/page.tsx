@@ -19,36 +19,6 @@ type Props = {
 export default function ExplorePage({ params }: Props) {
   const [isLoading, setLoading] = useState(true);
   const [festivals, setFestivals] = useState(Array<Festival>);
-  // const fetchData = useCallback(async (start: number, limit: number) => {
-  //   setLoading(true);
-  //   try {
-  //     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-  //     const path = `/festivals`;
-  //     const urlParamsObject = {
-  //       sort: { createdAt: "desc" },
-  //       populate: {
-  //         cover: { fields: ["url"] },
-  //         // category: { populate: "*" },
-  //         // authorsBio: {
-  //         //   populate: "*",
-  //         // },
-  //       },
-  //       pagination: {
-  //         start: start,
-  //         limit: limit,
-  //       },
-  //     };
-  //     const options = { headers: { Authorization: `Bearer ${token}` } };
-  //     const res = await fetchAPI(path, urlParamsObject, options);
-
-  //     let values = sanitize(res.data);
-  //     setFestivals(values);
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, []);
 
   async function fetchData(start: number, limit: number) {
     setLoading(true);

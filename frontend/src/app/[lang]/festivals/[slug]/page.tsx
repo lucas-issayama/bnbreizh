@@ -88,7 +88,7 @@ export async function generateStaticParams() {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/festivals`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
-  const articleResponse = await fetchAPI(
+  const festivalResponse = await fetchAPI(
     path,
     {
       populate: ["category"],
@@ -96,14 +96,17 @@ export async function generateStaticParams() {
     options
   );
 
-  return articleResponse.data.map(
-    (article: {
+  return festivalResponse.data?.map(
+    (festival: {
       attributes: {
         slug: string;
         category: {
           slug: string;
         };
       };
-    }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
+    }) => ({
+      slug: festival.attributes.slug,
+      category: festival.attributes.slug,
+    })
   );
 }

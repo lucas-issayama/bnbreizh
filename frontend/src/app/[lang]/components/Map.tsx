@@ -75,7 +75,7 @@ export default function MapComponent({ festivals }: any) {
               alt="space center"
               width={"100%"}
               style={{ margin: "0px", padding: "0px" }}
-              src="https://active-ants-7480a709ab.media.strapiapp.com/marker_62ed827ae7.webp"
+              src="https://active-ants-7480a709ab.media.strapiapp.com/marker_Black_a218de54d9.png"
             />
           </div>
         </Marker>

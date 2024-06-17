@@ -68,7 +68,10 @@ export default function Festivals() {
 
   return (
     <div>
-      <PageHeader heading="Search" text="Search your favorite festivals" />
+      <PageHeader
+        heading="Festivals"
+        text="Discover a festival and plan your trip for an unforgettable experience"
+      />
       <FestivalsList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (

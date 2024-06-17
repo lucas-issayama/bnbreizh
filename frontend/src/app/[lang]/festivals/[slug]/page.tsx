@@ -2,7 +2,7 @@ import { fetchAPI } from "@/app/[lang]/utils/fetch-api";
 
 import type { Metadata } from "next";
 import FestivalView from "../../views/festival-view";
-import sanitize from "../../utils/sanitize";
+import sanitizeData from "../../utils/sanitize-data";
 
 async function getFestivalBySlug(slug: string) {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -78,9 +78,8 @@ export default async function PostRoute({
 }) {
   const { slug } = params;
   const data = await getFestivalBySlug(slug);
-  const festival = sanitize(data.data[0]);
-  console.log("----------- festival------------");
-  console.timeLog(JSON.stringify({ festival }));
+  const festival = sanitizeData(data.data[0]);
+
   if (data.data.length === 0) return <h2>no post found</h2>;
   return <FestivalView data={festival} />;
 }

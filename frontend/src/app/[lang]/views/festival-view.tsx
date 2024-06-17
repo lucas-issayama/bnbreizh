@@ -26,31 +26,10 @@ export default function FestivalView({ data }: { data: Festival }) {
     musicStyles,
     tags,
   } = data;
-  //const author = authorsBio.data?.attributes;
-  const imageUrl = getStrapiMedia(cover.url);
-  // const authorImgUrl = getStrapiMedia(
-  //   authorsBio.data?.attributes.avatar.data.attributes.url
-  // );
-
-  const maxStars = 5;
-  const filledStars = 1;
-  const emptyStars = maxStars - filledStars;
 
   return (
     <article className="space-y-8 dark:bg-black dark:text-gray-50  bg-opacity-80">
-      {/* <p>{JSON.stringify({ data })}</p> */}
-
       {carousel.length > 0 && <ImageSlider data={{ files: carousel }} />}
-
-      {/* {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt="article cover image"
-          width={400}
-          height={400}
-          className="w-full h-96 object-cover rounded-lg"
-        />
-      )} */}
 
       <div className="space-y-6">
         <h1 className="leading-tight text-5xl font-bold ">{title}</h1>
@@ -60,9 +39,8 @@ export default function FestivalView({ data }: { data: Festival }) {
             <Badge variant="outline">{tag.label}</Badge>
           ))}
         </div>
-        <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
-          <div className="col-span-2">
-            {" "}
+        <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 ">
+          <div className="col-span-1">
             <Card>
               <CardHeader>
                 <CardTitle>Location</CardTitle>
@@ -72,7 +50,6 @@ export default function FestivalView({ data }: { data: Festival }) {
             </Card>
           </div>
           <div className="col-span-1">
-            {" "}
             <Card>
               <CardHeader>
                 <CardTitle>Avarage price </CardTitle>
@@ -87,106 +64,83 @@ export default function FestivalView({ data }: { data: Festival }) {
         </div>
       </div>
 
-      <div>
-        <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6 ">
-          <div className="col-span-2">
-            {" "}
-            <Card>
-              <CardHeader>
-                <CardTitle>Artists</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {artists?.map((artist: any) => (
-                  <div className="flex justify-start my-2">
-                    {artist?.cover?.url && (
-                      <Image
-                        src={getStrapiMedia(artist?.cover?.url) ?? ""}
-                        alt="article cover image"
-                        width={100}
-                        height={100}
-                        className="w-10 h-10 border rounded-full dark:bg-gray-500 dark:border-gray-700"
-                      />
-                    )}
-                    <div className="mx-2 mt-1">{artist?.name}</div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-          <div className="col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Music styles</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {musicStyles?.map((musicStyle) => (
-                  <div className="">
-                    {/* <p>{JSON.stringify(musicStyle)}</p> */}
-                    {/* <div className="mx-2 mt-1"></div> */}
-                    <Badge
-                      variant="outline"
-                      color="red"
-                      style={{
-                        backgroundColor: musicStyle?.color ?? "white",
-                        color: musicStyle?.textColor ?? "black",
-                      }}
-                    >
-                      {musicStyle?.title}
-                    </Badge>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-          <div className="col-span-2">
-            {" "}
-            <Card>
-              <CardHeader>
-                <CardTitle>Reviews</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {reviews?.map((review: any) => (
-                  <div className="flex justify-between  my-2">
-                    <div className=" flex justify-start">
-                      {review?.reviewer?.cover?.url && (
-                        <Image
-                          src={
-                            getStrapiMedia(review?.reviewer?.cover?.url) ?? ""
-                          }
-                          alt="article cover image"
-                          width={100}
-                          height={100}
-                          className="w-10 h-10 border rounded-full dark:bg-gray-500 dark:border-gray-700"
-                        />
-                      )}
-                      <div className="mx-2 mt-1">{review?.reviewer?.name}</div>
-                    </div>
-                    {/* <p className="mx-2 mt-1">{review?.stars} </p> */}
-                    {/* @ts-ignore */}
-                    <Rating rating={review?.stars ?? 0}></Rating>
-                  </div>
-                ))}
-                {/* <div className="flex justify-between">
-                  {authorImgUrl && (
+      <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6 ">
+        <div className="col-span-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Artists</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {artists?.map((artist: any) => (
+                <div className="flex justify-start my-2">
+                  {artist?.cover?.url && (
                     <Image
-                      src={authorImgUrl}
+                      src={getStrapiMedia(artist?.cover?.url) ?? ""}
                       alt="article cover image"
                       width={100}
                       height={100}
                       className="w-10 h-10 border rounded-full dark:bg-gray-500 dark:border-gray-700"
                     />
                   )}
-                  <p className="mx-2">5</p>
-                </div> */}
-              </CardContent>
-            </Card>
-          </div>
+                  <div className="mx-2 mt-1">{artist?.name}</div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+        <div className="col-span-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Music styles</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {musicStyles?.map((musicStyle) => (
+                <div className="">
+                  <Badge
+                    variant="outline"
+                    color="red"
+                    style={{
+                      backgroundColor: musicStyle?.color ?? "white",
+                      color: musicStyle?.textColor ?? "black",
+                    }}
+                  >
+                    {musicStyle?.title}
+                  </Badge>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+        <div className="col-span-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Reviews</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {reviews?.map((review: any) => (
+                <div className="flex justify-between  my-2">
+                  <div className=" flex justify-start">
+                    {review?.reviewer?.cover?.url && (
+                      <Image
+                        src={getStrapiMedia(review?.reviewer?.cover?.url) ?? ""}
+                        alt="article cover image"
+                        width={100}
+                        height={100}
+                        className="w-10 h-10 border rounded-full dark:bg-gray-500 dark:border-gray-700"
+                      />
+                    )}
+                    <div className="mx-2 mt-1">{review?.reviewer?.name}</div>
+                  </div>
+                  <Rating rating={review?.stars ?? 0}></Rating>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
       </div>
 
       <div className="dark:text-gray-100">
         <p>{description}</p>
-
         {data.blocks.map((section: any, index: number) => (
           <BlockView section={section} index={index}></BlockView>
         ))}
@@ -194,5 +148,3 @@ export default function FestivalView({ data }: { data: Festival }) {
     </article>
   );
 }
-
-// postRenderer(section, index)

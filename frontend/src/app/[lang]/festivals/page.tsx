@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import Blog from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
 import FestivalsList from "../views/festivals-list";
+import sanitizeData from "../utils/sanitize-data";
 
 interface Meta {
   pagination: {
@@ -17,7 +18,7 @@ interface Meta {
 
 export default function Festivals() {
   const [meta, setMeta] = useState<Meta | undefined>();
-  const [data, setData] = useState<any>([]);
+  const [festivals, setFestivals] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
 
   const fetchData = useCallback(async (start: number, limit: number) => {
@@ -29,10 +30,6 @@ export default function Festivals() {
         sort: { createdAt: "desc" },
         populate: {
           cover: { fields: ["url"] },
-          // category: { populate: "*" },
-          // authorsBio: {
-          //   populate: "*",
-          // },
         },
         pagination: {
           start: start,
@@ -42,9 +39,12 @@ export default function Festivals() {
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
       if (start === 0) {
-        setData(responseData.data);
+        setFestivals(sanitizeData(responseData.data));
       } else {
-        setData((prevData: any[]) => [...prevData, ...responseData.data]);
+        setFestivals((prevData: any[]) => [
+          ...prevData,
+          ...sanitizeData(responseData.data),
+        ]);
       }
 
       setMeta(responseData.meta);
@@ -55,7 +55,7 @@ export default function Festivals() {
     }
   }, []);
 
-  function loadMorePosts(): void {
+  function loadMore(): void {
     const nextPosts = meta!.pagination.start + meta!.pagination.limit;
     fetchData(nextPosts, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
   }
@@ -72,16 +72,16 @@ export default function Festivals() {
         heading="Festivals"
         text="Discover a festival and plan your trip for an unforgettable experience"
       />
-      <FestivalsList data={data}>
+      <FestivalsList data={festivals}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
           <div className="flex justify-center">
             <button
               type="button"
               className="px-6 py-3 text-sm rounded-lg hover:underline dark:bg-gray-900 dark:text-gray-400"
-              onClick={loadMorePosts}
+              onClick={loadMore}
             >
-              Load more posts...
+              Load more ...
             </button>
           </div>
         )}

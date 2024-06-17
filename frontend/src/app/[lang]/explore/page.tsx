@@ -7,7 +7,7 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../utils/fetch-api";
 
 import Map from "../components/Map";
-import sanitize from "../utils/sanitize";
+import sanitize from "../utils/sanitize-data";
 
 type Props = {
   params: {

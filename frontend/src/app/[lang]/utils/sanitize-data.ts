@@ -1,4 +1,4 @@
-function sanitize(data: any) {
+function sanitizeData(data: any) {
   if (data) {
     if (Array.isArray(data)) {
       return data.map((el) => {
@@ -10,7 +10,7 @@ function sanitize(data: any) {
           const keys = Object.keys(attributes);
           for (var a = 0; a < keys.length; a++) {
             if (attributes[keys[a]] && attributes[keys[a]].data) {
-              attributes[keys[a]] = sanitize(attributes[keys[a]].data);
+              attributes[keys[a]] = sanitizeData(attributes[keys[a]].data);
             }
           }
           return attributes;
@@ -24,7 +24,7 @@ function sanitize(data: any) {
         const keys = Object.keys(attributes);
         for (var a = 0; a < keys.length; a++) {
           if (attributes[keys[a]] && attributes[keys[a]].data) {
-            attributes[keys[a]] = sanitize(attributes[keys[a]].data);
+            attributes[keys[a]] = sanitizeData(attributes[keys[a]].data);
           }
         }
         return { id: parseInt(data.id), ...data.attributes };
@@ -35,4 +35,4 @@ function sanitize(data: any) {
   }
 }
 
-export default sanitize;
+export default sanitizeData;

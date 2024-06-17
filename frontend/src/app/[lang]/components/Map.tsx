@@ -5,22 +5,17 @@ import Map, { Marker, Popup, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { getStrapiMedia } from "../utils/api-helpers";
 
+interface Marker {
+  id: number;
+  longitude: number;
+  latitude: number;
+  description: string;
+  imageUrl: string;
+}
+
 export default function MapComponent({ festivals }: any) {
-  //const MapComponent: React.FC = () => {
-  const [markers, setMarkers] = useState([
-    {
-      id: 1,
-      longitude: -4.4855,
-      latitude: 48.3814,
-      description: "Brest",
-      imageUrl: "",
-    },
-    //{ id: 2, longitude: -2.0324, latitude: 48.6445, description: "Saint-Malo" },
-    // { id: 3, longitude: -1.675, latitude: 48.1173, description: "Rennes" },
-  ]);
-  //   const markers =;
+  const [markers, setMarkers] = useState(Array<Marker>);
   useEffect(() => {
-    // alert(JSON.stringify({ festivals }));
     if (festivals.length) {
       setMarkers(
         festivals.map((el: any) => ({
@@ -32,8 +27,6 @@ export default function MapComponent({ festivals }: any) {
         }))
       );
     }
-
-    //loadMarkers
   }, [festivals]);
   const [selectedMarker, setSelectedMarker] = useState<
     null | (typeof markers)[0]
@@ -90,7 +83,7 @@ export default function MapComponent({ festivals }: any) {
           <div>
             {selectedMarker.description}
             <img
-              alt="space center"
+              alt={selectedMarker?.description}
               width={"100%"}
               style={{ margin: "0px", padding: "0px" }}
               src={selectedMarker?.imageUrl}
@@ -101,5 +94,3 @@ export default function MapComponent({ festivals }: any) {
     </Map>
   );
 }
-
-//export default MapComponent;

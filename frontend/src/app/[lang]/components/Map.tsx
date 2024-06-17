@@ -3,12 +3,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Map, { Marker, Popup, NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { getStrapiMedia } from "../utils/api-helpers";
 
 export default function MapComponent({ festivals }: any) {
   //const MapComponent: React.FC = () => {
   const [markers, setMarkers] = useState([
-    { id: 1, longitude: -4.4855, latitude: 48.3814, description: "Brest" },
-    { id: 2, longitude: -2.0324, latitude: 48.6445, description: "Saint-Malo" },
+    {
+      id: 1,
+      longitude: -4.4855,
+      latitude: 48.3814,
+      description: "Brest",
+      imageUrl: "",
+    },
+    //{ id: 2, longitude: -2.0324, latitude: 48.6445, description: "Saint-Malo" },
     // { id: 3, longitude: -1.675, latitude: 48.1173, description: "Rennes" },
   ]);
   //   const markers =;
@@ -21,6 +28,7 @@ export default function MapComponent({ festivals }: any) {
           longitude: el.longitude ?? -4.4855,
           latitude: el.latitude ?? 48.3814,
           description: el?.title,
+          imageUrl: getStrapiMedia(el?.cover?.url),
         }))
       );
     }
@@ -55,12 +63,21 @@ export default function MapComponent({ festivals }: any) {
         >
           <div
             style={{
-              background: "red",
+              background: "transparent",
               borderRadius: "50%",
-              width: "10px",
-              height: "10px",
+              width: "30px",
+              height: "30px",
+              position: "relative",
+              cursor: "pointer",
             }}
-          />
+          >
+            <img
+              alt="space center"
+              width={"100%"}
+              style={{ margin: "0px", padding: "0px" }}
+              src="https://active-ants-7480a709ab.media.strapiapp.com/marker_62ed827ae7.webp"
+            />
+          </div>
         </Marker>
       ))}
       {selectedMarker && (
@@ -70,7 +87,15 @@ export default function MapComponent({ festivals }: any) {
           onClose={() => setSelectedMarker(null)}
           closeOnClick={true}
         >
-          <div>{selectedMarker.description}</div>
+          <div>
+            {selectedMarker.description}
+            <img
+              alt="space center"
+              width={"100%"}
+              style={{ margin: "0px", padding: "0px" }}
+              src={selectedMarker?.imageUrl}
+            />
+          </div>
         </Popup>
       )}
     </Map>

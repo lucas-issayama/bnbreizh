@@ -13,7 +13,7 @@ async function fetchSideMenuData(filter: string) {
     );
 
     const articlesResponse = await fetchAPI(
-      "/articles",
+      "/festivals",
       filter
         ? {
             filters: {
@@ -92,7 +92,7 @@ export default async function LayoutRoute({
 
 export async function generateStaticParams() {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-  const path = `/articles`;
+  const path = `/festivals`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const articleResponse = await fetchAPI(
     path,

@@ -91,7 +91,7 @@ export async function generateStaticParams() {
   const festivalResponse = await fetchAPI(
     path,
     {
-      populate: ["category"],
+      //   populate: ["category"],
     },
     options
   );
@@ -100,13 +100,13 @@ export async function generateStaticParams() {
     (festival: {
       attributes: {
         slug: string;
-        category: {
-          slug: string;
-        };
+        // category: {
+        //   slug: string;
+        // };
       };
     }) => ({
       slug: festival.attributes.slug,
-      category: festival.attributes.slug,
+      //   category: festival.attributes.slug,
     })
   );
 }

@@ -1,5 +1,4 @@
 import { formatDate, getStrapiMedia } from "@/app/[lang]/utils/api-helpers";
-import { postRenderer } from "@/app/[lang]/utils/post-renderer";
 import Image from "next/image";
 import ImageSlider from "../components/ImageSlider";
 import {

@@ -10,10 +10,13 @@ async function getFestivalBySlug(slug: string) {
   const urlParamsObject = {
     filters: { slug },
     populate: {
+      //cover: { fields: ["url"] },
       cover: { fields: ["url"] },
       //authorsBio: { populate: "*" },
       category: { fields: ["name"] },
-      carousel: { fields: ["url", "alternativeText", "caption"] },
+      carousel: {
+        fields: ["url", "alternativeText", "caption"],
+      },
       artists: { fields: ["name"], populate: { cover: { fields: ["url"] } } },
       reviews: {
         fields: ["stars"],

@@ -43,10 +43,3 @@ interface Festival {
   blocks: any[];
   publishedAt: string;
 }
-
-// reviews: {
-//     fields: ["stars"],
-//     populate: {
-//       reviewer: { fields: ["name"], cover: { fields: ["url"] } },
-//     },
-//   },

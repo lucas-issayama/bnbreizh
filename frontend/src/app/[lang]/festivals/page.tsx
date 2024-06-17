@@ -27,7 +27,7 @@ export default function Festivals() {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
       const path = `/festivals`;
       const urlParamsObject = {
-        sort: { createdAt: "desc" },
+        sort: "createdAt",
         populate: {
           cover: { fields: ["url"] },
         },

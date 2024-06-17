@@ -75,17 +75,6 @@ export default async function LayoutRoute({
   return (
     <section className="container p-8 mx-auto space-y-6 sm:space-y-12 ">
       <div className="col-span-3">{children}</div>
-      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4"> */}
-      {/* <div className="col-span-3">{children}</div> */}
-
-      {/* <aside className="bg-blue-500 bg-opacity-50">
-          <ArticleSelect
-            categories={categories}
-            articles={articles}
-            params={params}
-          />
-        </aside> */}
-      {/* </div> */}
     </section>
   );
 }
@@ -94,21 +83,12 @@ export async function generateStaticParams() {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/festivals`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
-  const articleResponse = await fetchAPI(
-    path,
-    {
-      populate: ["category"],
-    },
-    options
-  );
+  const festivalResponse = await fetchAPI(path, {}, options);
 
-  return articleResponse.data.map(
+  return festivalResponse.data.map(
     (article: {
       attributes: {
         slug: string;
-        category: {
-          slug: string;
-        };
       };
     }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
   );

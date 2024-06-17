@@ -80,39 +80,12 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang}>
-      <body
-        className="max-w-[1200px] mx-auto"
-        // style={{
-        //   backgroundImage:
-        //     "url(https://www.artrock.org/wp-content/uploads/2024/02/art-rock-2022-credits-spoon-768x512.jpg)",
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        //   backgroundRepeat: "no-repeat",
-        // }}
-      >
+      <body className="max-w-[1200px] mx-auto">
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
           logoText={navbar.navbarLogo.logoText}
         />
-        {/* <video
-          className="video-background"
-          autoPlay
-          loop
-          muted
-          src="https://www.youtube.com/watch?v=tosns6yfH64"
-        ></video> */}
-        {/* <div className="video-background">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/tosns6yfH64?autoplay=1&mute=1&loop=1&playlist=tosns6yfH64"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div> */}
 
         <main className="dark:bg-black dark:text-gray-100 min-h-screen ">
           {children}

@@ -48,7 +48,7 @@ export default function ExplorePage({ params }: Props) {
     }
   }
   useEffect(() => {
-    fetchData(0, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
+    fetchData(0, 20);
   }, []);
 
   return (

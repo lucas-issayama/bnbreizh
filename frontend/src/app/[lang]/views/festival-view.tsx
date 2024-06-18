@@ -57,7 +57,7 @@ export default function FestivalView({ data }: { data: Festival }) {
               </CardHeader>
               <CardContent>
                 <p className="text-2xl font-bold">
-                  {data.avaragePricePerDay} € /day
+                  {data.averagePricePerDay} € /day
                 </p>
               </CardContent>
             </Card>

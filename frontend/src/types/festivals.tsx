@@ -3,7 +3,7 @@ interface Festival {
   title: string;
   description: string;
   slug: string;
-  avaragePricePerDay: number;
+  averagePricePerDay: number;
   cityName: string;
   cover: {
     url: string;

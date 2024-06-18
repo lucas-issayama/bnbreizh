@@ -99,11 +99,11 @@ export default function FestivalView({ data }: { data: Festival }) {
                 <div key={musicStyle.id} className="">
                   <Badge
                     variant="outline"
-                    color="red"
-                    style={{
-                      backgroundColor: musicStyle?.color ?? "white",
-                      color: musicStyle?.textColor ?? "black",
-                    }}
+
+                    // style={{
+                    //   backgroundColor: musicStyle?.color ?? "white",
+                    //   color: musicStyle?.textColor ?? "black",
+                    // }}
                   >
                     {musicStyle?.title}
                   </Badge>

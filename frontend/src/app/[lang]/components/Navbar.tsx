@@ -74,7 +74,7 @@ export default function Navbar({
           </Logo>
         </div>
 
-        <div className="items-center flex-shrink-0 hidden lg:flex">
+        <div className="items-center flex-shrink-0 hidden lg:flex   ">
           <ul className="items-stretch hidden space-x-3 lg:flex">
             {links.map((item: NavLink) => (
               <NavLink key={item.id} {...item} />
@@ -90,8 +90,7 @@ export default function Navbar({
           onClose={setMobileMenuOpen}
         >
           <div className="fixed inset-0 z-40 bg-gray-600 bg-opacity-75" />{" "}
-          {/* Overlay */}
-          <Dialog.Panel className="fixed inset-y-0 rtl:left-0 ltr:right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
+          <Dialog.Panel className="fixed inset-y-0 rtl:right-0 right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-inset sm:ring-white/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Strapi</span>
@@ -125,7 +124,7 @@ export default function Navbar({
           className="p-4 lg:hidden"
           onClick={() => setMobileMenuOpen(true)}
         >
-          <Bars3Icon className="h-7 w-7 text-gray-100" aria-hidden="true" />
+          <Bars3Icon className="h-7 w-7 text-gray-40" aria-hidden="true" />
         </button>
       </div>
     </div>

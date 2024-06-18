@@ -119,7 +119,7 @@ Once your environment variables are set you can start your frontend application 
 
 You should now see your Next JS frontend.
 
-![frontend](https://user-images.githubusercontent.com/6153188/231865662-d870051f-4503-4a01-bc6b-635c7c5ca40d.png)
+![frontend](https://raw.githubusercontent.com/lucas-issayama/bnbreizh/main/firstPage.png)
 
 ## Start Both Projects Concurrently
 

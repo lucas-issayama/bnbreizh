@@ -77,7 +77,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostRoute({
+export default async function FestivalsPage({
   params,
 }: {
   params: { slug: string };
@@ -94,25 +94,28 @@ export async function generateStaticParams() {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/festivals`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
-  const festivalResponse = await fetchAPI(
-    path,
-    {
-      //   populate: ["category"],
-    },
-    options
+  const festivalResponse = await fetchAPI(path, {}, options);
+  console.log("generateStaticParams - festivals page");
+  console.log(
+    JSON.stringify(
+      festivalResponse.data?.map(
+        (festival: {
+          attributes: {
+            slug: string;
+          };
+        }) => ({
+          slug: festival.attributes.slug,
+        })
+      )
+    )
   );
-
   return festivalResponse.data?.map(
     (festival: {
       attributes: {
         slug: string;
-        // category: {
-        //   slug: string;
-        // };
       };
     }) => ({
       slug: festival.attributes.slug,
-      //   category: festival.attributes.slug,
     })
   );
 }

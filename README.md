@@ -5,7 +5,7 @@ https://strapi.io/starters/strapi-starter-next-js-corporate
 
 You can check the demo site on https://bnbreizh.vercel.app
 
-![demo-site](https://raw.githubusercontent.com/lucas-issayama/bnbreizh/main/demoBnBreizh.mkv)
+![demo-site](https://raw.githubusercontent.com/lucas-issayama/bnbreizh/main/demoBnBreizh.gif)
 
 ## Hello Strapi
 

@@ -62,7 +62,7 @@
     "cityName": {
       "type": "string"
     },
-    "avaragePricePerDay": {
+    "averagePricePerDay": {
       "type": "float"
     },
     "reviews": {

@@ -853,7 +853,7 @@ export interface ApiFestivalFestival extends Schema.CollectionType {
       ]
     >;
     cityName: Attribute.String;
-    avaragePricePerDay: Attribute.Float;
+    averagePricePerDay: Attribute.Float;
     reviews: Attribute.Relation<
       'api::festival.festival',
       'oneToMany',

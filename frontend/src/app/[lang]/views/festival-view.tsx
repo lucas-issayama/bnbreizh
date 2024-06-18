@@ -53,7 +53,7 @@ export default function FestivalView({ data }: { data: Festival }) {
           <div className="col-span-1">
             <Card>
               <CardHeader>
-                <CardTitle>Avarage price </CardTitle>
+                <CardTitle>Average price </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-2xl font-bold">

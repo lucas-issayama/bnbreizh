@@ -1,6 +1,9 @@
 # BnBreizh - Discover the Magic of Music in Brittany
 
 This project is base on Strapi Starter Next 14, Tailwind, Typescript and Strapi
+
+https://github.com/strapi/nextjs-corporate-starter
+
 https://strapi.io/starters/strapi-starter-next-js-corporate
 
 You can check the demo site on https://bnbreizh.vercel.app

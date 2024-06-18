@@ -71,6 +71,7 @@ export default function Festivals() {
         heading="Festivals"
         text="Discover a festival and plan your trip for an unforgettable experience"
       />
+
       <FestivalsList data={festivals}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (

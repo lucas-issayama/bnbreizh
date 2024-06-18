@@ -71,16 +71,16 @@ Inside your Strapi Admin Panel navigate to Settings -> API Tokens and click on t
 
 ![api-tokens](https://user-images.githubusercontent.com/6153188/231865572-cebc5538-374c-4050-91cd-c303fae25a3d.png)
 
-Here are our Token Settings
+Token Settings
 
-NEXT_PUBLIC_STRAPI_API_TOKEN
+[] NEXT_PUBLIC_STRAPI_API_TOKEN
 
 Name: Public
 Description: Public.
 Token duration: Unlimited
 Token type: Read-Only
 
-NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN
+[] NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN
 
 Name: Public API Form Submit
 Description: Form Submission.

@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../utils/fetch-api";
 
 import Loader from "../components/Loader";
-import Blog from "../views/blog-list";
 import PageHeader from "../components/PageHeader";
 import FestivalsList from "../views/festivals-list";
 import sanitizeData from "../utils/sanitize-data";

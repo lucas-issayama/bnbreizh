@@ -35,7 +35,9 @@ export default function FestivalView({ data }: { data: Festival }) {
 
         <div className="flex justify-start">
           {tags?.map((tag) => (
-            <Badge variant="outline">{tag.label}</Badge>
+            <Badge key={tag.id} variant="outline">
+              {tag.label}
+            </Badge>
           ))}
         </div>
         <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 ">
@@ -70,8 +72,8 @@ export default function FestivalView({ data }: { data: Festival }) {
               <CardTitle>Artists</CardTitle>
             </CardHeader>
             <CardContent>
-              {artists?.map((artist: any) => (
-                <div className="flex justify-start my-2">
+              {artists?.map((artist) => (
+                <div key={artist.id} className="flex justify-start my-2">
                   {artist?.cover?.url && (
                     <Image
                       src={getStrapiMedia(artist?.cover?.url) ?? ""}
@@ -94,7 +96,7 @@ export default function FestivalView({ data }: { data: Festival }) {
             </CardHeader>
             <CardContent>
               {musicStyles?.map((musicStyle) => (
-                <div className="">
+                <div key={musicStyle.id} className="">
                   <Badge
                     variant="outline"
                     color="red"
@@ -117,7 +119,7 @@ export default function FestivalView({ data }: { data: Festival }) {
             </CardHeader>
             <CardContent>
               {reviews?.map((review: any) => (
-                <div className="flex justify-between  my-2">
+                <div key={review.id} className="flex justify-between  my-2">
                   <div className=" flex justify-start">
                     {review?.reviewer?.cover?.url && (
                       <Image
@@ -141,7 +143,7 @@ export default function FestivalView({ data }: { data: Festival }) {
       <div className="dark:text-gray-100">
         <p>{description}</p>
         {data.blocks.map((section: any, index: number) => (
-          <BlockView section={section} index={index}></BlockView>
+          <BlockView key={index} section={section} index={index}></BlockView>
         ))}
       </div>
     </article>

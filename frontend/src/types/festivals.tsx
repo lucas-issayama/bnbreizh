@@ -33,11 +33,13 @@ interface Festival {
   }>;
 
   musicStyles: Array<{
+    id: number;
     title: string;
     color: string;
     textColor: string;
   }>;
   tags: Array<{
+    id: number;
     label: string;
   }>;
   blocks: any[];

@@ -17,9 +17,12 @@ async function getFestivalBySlug(slug: string) {
       carousel: {
         fields: ["url", "alternativeText", "caption"],
       },
-      artists: { fields: ["name"], populate: { cover: { fields: ["url"] } } },
+      artists: {
+        fields: ["id", "name"],
+        populate: { cover: { fields: ["url"] } },
+      },
       reviews: {
-        fields: ["stars"],
+        fields: ["id", "stars"],
         populate: {
           reviewer: {
             fields: ["name"],
@@ -28,8 +31,8 @@ async function getFestivalBySlug(slug: string) {
         },
       },
 
-      musicStyles: { fields: ["title", "color", "textColor"] },
-      tags: { fields: ["label"] },
+      musicStyles: { fields: ["id", "title", "color", "textColor"] },
+      tags: { fields: ["id", "label"] },
       blocks: {
         populate: {
           __component: "*",

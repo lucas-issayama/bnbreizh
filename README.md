@@ -73,14 +73,14 @@ Inside your Strapi Admin Panel navigate to Settings -> API Tokens and click on t
 
 Token Settings
 
-[] NEXT_PUBLIC_STRAPI_API_TOKEN
+- NEXT_PUBLIC_STRAPI_API_TOKEN
 
 Name: Public
 Description: Public.
 Token duration: Unlimited
 Token type: Read-Only
 
-[] NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN
+- NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN
 
 Name: Public API Form Submit
 Description: Form Submission.

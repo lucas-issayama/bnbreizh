@@ -95,20 +95,7 @@ export async function generateStaticParams() {
   const path = `/festivals`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const festivalResponse = await fetchAPI(path, {}, options);
-  console.log("generateStaticParams - festivals page");
-  console.log(
-    JSON.stringify(
-      festivalResponse.data?.map(
-        (festival: {
-          attributes: {
-            slug: string;
-          };
-        }) => ({
-          slug: festival.attributes.slug,
-        })
-      )
-    )
-  );
+
   return festivalResponse.data?.map(
     (festival: {
       attributes: {

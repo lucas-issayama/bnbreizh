@@ -1,5 +1,9 @@
 # BnBreizh - Discover the Magic of Music in Brittany
 
+https://bnbreizh.vercel.app
+
+![demo-site](https://raw.githubusercontent.com/lucas-issayama/bnbreizh/main/demoBnBreizh.gif)
+
 BnBreizh is an application designed to help users explore and discover festivals in Brittany, France. This demo website provides an engaging and user-friendly platform to locate festivals on a map, view detailed information about each event, and enhance their cultural experience in one of France's most vibrant regions.
 
 This project is base on Strapi Starter Next 14, Tailwind, Typescript and Strapi
@@ -7,10 +11,6 @@ This project is base on Strapi Starter Next 14, Tailwind, Typescript and Strapi
 https://github.com/strapi/nextjs-corporate-starter
 
 https://strapi.io/starters/strapi-starter-next-js-corporate
-
-You can check the demo site on https://bnbreizh.vercel.app
-
-![demo-site](https://raw.githubusercontent.com/lucas-issayama/bnbreizh/main/demoBnBreizh.gif)
 
 ## Getting Started
 
